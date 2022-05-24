@@ -6,7 +6,7 @@ COMMAND_ENABLE = no
 MOUSEKEY_ENABLE = yes
 
 VIA_ENABLE = yes
-TAP_DANCE_ENABLE = yes
+TAP_DANCE_ENABLE = no
 BOOTMAGIC_ENABLE = yes         # Enable Bootmagic Lite
 
 TD_LSFT_CAPSLOCK_ENABLE = yes

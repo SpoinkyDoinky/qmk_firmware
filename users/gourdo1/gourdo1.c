@@ -21,35 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "caps_word.h"
 
-#ifdef TD_LSFT_CAPSLOCK_ENABLE
-// Tap once for shift, twice for Caps Lock but only if Win Key in not disabled
-void dance_LSFT_each_tap(qk_tap_dance_state_t * state, void * user_data) {
-    if (state -> count == 1 || keymap_config.no_gui) {
-        register_code16(KC_LSFT);
-    } else {
-        register_code(KC_CAPS);
-    }
-}
-
-void dance_LSFT_reset(qk_tap_dance_state_t * state, void * user_data) {
-    if (state -> count == 1 || keymap_config.no_gui) {
-        unregister_code16(KC_LSFT);
-    } else {
-        unregister_code(KC_CAPS);
-        unregister_code16(KC_LSFT);
-    }
-}
-#endif // TD_LSFT_CAPSLOCK_ENABLE
-
-// Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-    #ifdef TD_LSFT_CAPSLOCK_ENABLE
-    // Tap once for shift, twice for Caps Lock
-    [TD_LSFT_CAPS_WIN] = ACTION_TAP_DANCE_FN_ADVANCED(dance_LSFT_each_tap, NULL, dance_LSFT_reset),
-    #endif // TD_LSFT_CAPSLOCK_ENABLE
-    // Tap once for Escape, twice to reset to base layer
-};
-
 // RGB NIGHT MODE
 #ifdef RGB_MATRIX_ENABLE
 static bool rgb_nightmode = false;
